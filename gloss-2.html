@@ -1,0 +1,394 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bienvenido a la tienda online The Glow, productos de belleza con ácido hialurónico."
+    />
+    <title>Mi tienda - THE GLOW</title>
+    <style>
+      body {
+        background-image: url("fondo.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+      }
+
+      header {
+        padding: 20px;
+        position: relative;
+      }
+
+      .logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 250px;
+        height: auto;
+        z-index: 10;
+        border-radius: 15px;
+      }
+
+      .carrito {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 1.5em;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .carrito:hover {
+        background-color: #80e6a7;
+      }
+
+      h1 {
+        font-size: 3em;
+        font-weight: bold;
+        color: #e7c5e1;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+          0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.7);
+        animation: glowing 1.5s infinite alternate;
+      }
+
+      /* Aquí agrandamos el p debajo del h1 */
+      header p {
+        font-size: 2em;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #f8f1f9;
+      }
+
+      h2 {
+        font-size: 1.8em;
+        color: #80e6a7;
+      }
+
+      .productos-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 50px;
+        justify-items: center;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .producto {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        border-radius: 10px;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .producto img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        object-fit: contain;
+        max-height: 300px;
+        margin: 0 auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+      .producto h3 {
+        font-size: 1.5em;
+        color: #e7c5e1;
+      }
+
+      .producto p {
+        font-size: 1.2em;
+        color: #cae7c5;
+      }
+
+      footer {
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+      }
+
+      /* Estilos para el modal */
+      #carritoModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+        overflow-y: auto;
+        display: none;
+        z-index: 20;
+      }
+
+      #carritoModal ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #carritoModal li {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      #carritoModal button {
+        font-size: 1em;
+        background-color: #80e6a7;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin: 5px;
+        border-radius: 5px;
+      }
+
+      #carritoModal button:hover {
+        background-color: #64d189;
+      }
+
+      /* Estilos para el botón "Agregar al carrito" */
+      .producto button {
+        background-color: #80e6a7;
+        color: white;
+        padding: 12px 24px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s ease-in-out;
+      }
+
+      .producto button:hover {
+        background-color: #64d189;
+        transform: scale(1.1);
+      }
+
+      .producto button:active {
+        transform: scale(1);
+      }
+
+      .producto button:focus {
+        outline: none;
+      }
+
+      @keyframes glowing {
+        0% {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+            0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.7);
+        }
+        50% {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 1),
+            0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+        100% {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+            0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.7);
+        }
+      }
+
+      /* Estilos para la sección de información */
+      .info-container {
+        font-size: 1.5em;
+        font-weight: 600;
+        max-width: 600px;
+        margin: 40px auto 20px auto;
+        text-align: left;
+        color: #cae7c5;
+      }
+
+      .info-container h2 {
+        font-size: 2em;
+        color: #80e6a7;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .info-container ul {
+        list-style-type: disc;
+        padding-left: 20px;
+      }
+
+      /* Estilo para el enlace de contacto */
+      .contacto-link {
+        font-size: 1.5em;
+        display: block;
+        margin-top: 30px;
+        color: #80e6a7;
+        text-decoration: none;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .contacto-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="logo_gloss.jpeg" alt="Logo The Glow" class="logo" />
+      <div class="carrito" onclick="verCarrito()">
+        Carrito: <span id="totalItems">0</span> Items
+      </div>
+      <h1>THE GLOW</h1>
+      <p>Labios brillantes, sonrisa radiante.</p>
+      <h2>Productos</h2>
+    </header>
+
+    <div class="productos-container">
+      <div class="producto">
+        <h3>Nube pastel</h3>
+        <img src="gloos1.JPG" alt="Nube pastel" />
+        <br />
+        <button onclick="agregarAlCarrito('Nube pastel', 120)">
+          Agregar al carrito
+        </button>
+      </div>
+      <div class="producto">
+        <h3>Selva Brillante</h3>
+        <img src="gloos2.JPG" alt="Selva Brillante" />
+        <br />
+        <button onclick="agregarAlCarrito('Selva Brillante', 120)">
+          Agregar al carrito
+        </button>
+      </div>
+      <div class="producto">
+        <h3>Sueño de Sol</h3>
+        <img src="gloos3.JPG" alt="Sueño de Sol" />
+        <br />
+        <button onclick="agregarAlCarrito('Sueño de Sol', 120)">
+          Agregar al carrito
+        </button>
+      </div>
+      <div class="producto">
+        <h3>Reflejo Natural</h3>
+        <img src="gloos4.JPG" alt="Reflejo Natural" />
+        <br />
+        <button onclick="agregarAlCarrito('Reflejo Natural', 120)">
+          Agregar al carrito
+        </button>
+      </div>
+      <div class="producto">
+        <h3>Cielo Desierto</h3>
+        <img src="gloos5.JPG" alt="Cielo Desierto" />
+        <br />
+        <button onclick="agregarAlCarrito('Gloss Azul', 120)">
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+
+    <section class="info-container">
+      <h3>Lo que tienes que saber de estos productos</h3>
+      <ul>
+        <li>Es hidratante.</li>
+        <li>Tiene ácido hialurónico.</li>
+        <li>Acabado brillante.</li>
+      </ul>
+    </section>
+
+    <a
+      href="https://wa.me/4424630247?text=Hola%2C%20%c2%bfc%c3%b3mo%20puedo%20ayudarte%3F"
+      class="contacto-link"
+      >No dudes en contactarnos si tienes alguna pregunta</a
+    >
+
+    <div id="carritoModal">
+      <h2>Contenido del carrito</h2>
+      <ul id="carritoLista"></ul>
+      <button onclick="realizarCompra()">Comprar</button>
+      <button onclick="cerrarCarrito()">Cerrar</button>
+    </div>
+
+    <script>
+      let carrito = [];
+
+      function agregarAlCarrito(nombre, precio) {
+        carrito.push({ nombre, precio });
+        actualizarTotalItems();
+        console.log(carrito);
+      }
+
+      function eliminarDelCarrito(index) {
+        carrito.splice(index, 1);
+        actualizarTotalItems();
+        mostrarCarrito();
+      }
+
+      function actualizarTotalItems() {
+        document.getElementById("totalItems").textContent = carrito.length;
+      }
+
+      function mostrarCarrito() {
+        const listaCarrito = document.getElementById("carritoLista");
+        listaCarrito.innerHTML = "";
+        let total = 0;
+
+        carrito.forEach((item, index) => {
+          const li = document.createElement("li");
+          li.innerHTML = `${escapeHTML(item.nombre)} - $${item.precio.toFixed(
+            2
+          )} <button onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
+          listaCarrito.appendChild(li);
+          total += item.precio;
+        });
+
+        const totalLi = document.createElement("li");
+        totalLi.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+        listaCarrito.appendChild(totalLi);
+      }
+
+      function verCarrito() {
+        document.getElementById("carritoModal").style.display = "block";
+        mostrarCarrito();
+      }
+
+      function realizarCompra() {
+        if (carrito.length > 0) {
+          let mensaje = "Hola, quiero hacer un pedido:%0A"; // %0A = salto de línea
+          let total = 0;
+          carrito.forEach((item) => {
+            mensaje += `- ${item.nombre}: $${item.precio.toFixed(2)}%0A`;
+            total += item.precio;
+          });
+          mensaje += `Total: $${total.toFixed(2)}`;
+
+          const numeroWhatsApp = "4424630247";
+
+          const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+
+          window.open(urlWhatsApp, "_blank");
+
+          carrito = [];
+          actualizarTotalItems();
+          cerrarCarrito();
+        } else {
+          alert("Tu carrito está vacío.");
+        }
+      }
+
+      function cerrarCarrito() {
+        document.getElementById("carritoModal").style.display = "none";
+      }
+
+      function escapeHTML(str) {
+        const div = document.createElement("div");
+        div.textContent = str;
+        return div.innerHTML;
+      }
+    </script>
+  </body>
+</html>
